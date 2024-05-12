@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const AuthTabs = () => {
-  const user = useSelector((state) => state.user.userInfo);
+  const user = useSelector((state) => state.user?.userInfo);
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {

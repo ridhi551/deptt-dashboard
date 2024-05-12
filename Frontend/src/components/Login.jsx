@@ -24,7 +24,7 @@ const Login = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.user.userInfo);
+  const user = useSelector((state) => state.user?.userInfo);
   const dispatch = useDispatch();
   useEffect(() => {
     if (user) navigate("/");

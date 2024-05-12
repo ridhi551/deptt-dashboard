@@ -31,7 +31,7 @@ const Signup = () => {
   const [rollNumberError, setRollNumberError] = useState("");
   const toast = useToast();
   const { role } = useParams();
-  const user = useSelector((state) => state.user.userInfo);
+  const user = useSelector((state) => state.user?.userInfo);
   const navigate = useNavigate();
   const handleclick = () => {
     setShow1(!show1);

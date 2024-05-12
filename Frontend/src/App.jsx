@@ -5,6 +5,8 @@ import Home from "./Pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Auth from "./Pages/Auth";
 import AuthTabs from "./components/AuthTabs";
+import GeneratorTimeTable from "./Pages/GeneratorTimeTable";
+import ComingSoon from "./components/ComingSoon";
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
             path: "account",
             // element: <AccountPage />,
           },
+          {
+            path:"/timetable",
+            element: <GeneratorTimeTable/>,
+          }
         ],
       },
     ],
@@ -44,6 +50,10 @@ const router = createBrowserRouter([
     path: "auth/:role",
     element: <AuthTabs />,
   },
+  {
+    path: "*",
+    element: <ComingSoon />,
+  }
 ]);
 const App = () => {
   return <RouterProvider router={router} />;

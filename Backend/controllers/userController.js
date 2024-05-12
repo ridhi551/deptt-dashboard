@@ -3,8 +3,8 @@ const User = require("../models/userModel");
 const jwttoken = require("../config/jwttoken");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
-  if (!name || !email || !password) {
+  const { name, email, password, pic , role , rollNumber } = req.body;
+  if (!name || !email || !password ) {
     res.status(400);
     throw new Error("Please enter the required inputs !");
   }
@@ -19,6 +19,8 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     pic,
+    role,
+    rollNumber
   });
 
   if (newUser) {
@@ -28,6 +30,9 @@ const registerUser = asyncHandler(async (req, res) => {
       email:newUser.email,
       password: newUser.password,
       pic: newUser.pic,
+      role: newUser.role,
+      rollNumber: newUser.rollNumber,
+
       token: jwttoken(newUser.id),
     });
   } else {
@@ -49,9 +54,10 @@ const authUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       id: user.id,
       name: user.name,
-      password: user.password,
       email: user.email,
       pic: user.pic,
+      role: user.role,
+      rollNumber: user.rollNumber,
       token: jwttoken(user.id),
     });
   } else {
@@ -66,11 +72,13 @@ const allData = asyncHandler(async (req, res) => {
         $or: [
           { name: { $regex: req.query.search, $options: "i" } },
           { email: { $regex: req.query.search, $options: "i" } },
-        ],
-      }
-    : {}; //like params is for accessing the web parameters , querry is for accessing querry in the web parameters like api/user/?search = chetan
+        ], 
+      }  
+    : {}; //like params is for accessing the web parameters , 
+    //querry is for accessing querry in the web parameters like api/user/?search = chetan
 
   const users = await User.find(keyword).find({ _id: { $ne: req.user.id } }); // Give all users excpet the current user
   res.send(users);
 });
+
 module.exports = { registerUser, authUser, allData };
