@@ -34,8 +34,13 @@ const router = createBrowserRouter([
             // element: <AccountPage />,
           },
           {
-            path:"/timetable",
-            element: <GeneratorTimeTable/>,
+            path: "/timetable",
+            element: <GeneratorTimeTable />,
+          }
+          ,
+          {
+            path: "*",
+            element: <ComingSoon />,
           }
         ],
       },
@@ -49,10 +54,6 @@ const router = createBrowserRouter([
   {
     path: "auth/:role",
     element: <AuthTabs />,
-  },
-  {
-    path: "*",
-    element: <ComingSoon />,
   }
 ]);
 const App = () => {

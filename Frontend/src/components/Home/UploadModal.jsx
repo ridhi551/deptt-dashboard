@@ -45,8 +45,8 @@ import {
             <ModalCloseButton />
             <ModalBody pb={6}>
               <FormControl>
-                <FormLabel>Choose PDF file</FormLabel>
-                <Input ref={initialRef} type="file" onChange={handleFileChange} accept="application/pdf" />
+                <FormLabel>Choose file</FormLabel>
+                <Input ref={initialRef} type="file" onChange={handleFileChange} accept=".csv" />
               </FormControl>
             </ModalBody>
   

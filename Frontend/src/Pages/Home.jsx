@@ -29,6 +29,7 @@ const Home = () => {
         status: 'success',
         duration: 3000,
       })
+
     } catch (error) {
       toast({
         title: `${error.response.data.message}`,
@@ -47,18 +48,15 @@ const Home = () => {
     <div className="bg-slate-200 min-h-screen w-80 ">
       <div className="flex flex-col items-center gap-20 text-2xl font-semibold cursor-pointer">
         <img src={g_logo} alt="" className="size-32 mt-10" />
-        <h1
-          onClick={() => navigate("comingsoon")}
-        >
+        <h1 onClick={() => navigate("comingsoon")}>
           Dashboard
         </h1>
-        <h1  onClick={() => navigate("comingsoon")}>Results</h1>
+        <h1 onClick={() => navigate("comingsoon")}>Results</h1>
         <h1 onClick={() => navigate("timetable")}>Time Table</h1>
-        <h1  onClick={() => navigate("comingsoon")}>Updates</h1>
+        <h1 onClick={() => navigate("comingsoon")}>Updates</h1>
 
-        {user.role === "teacher" && (
+        {user?.role === "teacher" && (
           <UploadModal onSave={onSave} />
-
         )}
       </div>
     </div>

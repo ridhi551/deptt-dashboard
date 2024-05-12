@@ -54,6 +54,7 @@ const Login = () => {
       return;
     }
 
+
     if (!password) {
       setPasswordError("Password is required");
       setLoading(false);
@@ -67,13 +68,10 @@ const Login = () => {
 
     try {
       const { data } = await axios.post("/user/login", { email, password });
-      console.log("HI");
       localStorage.setItem("token", data.token);
       dispatch(login(data));
       navigate("/");
     } catch (error) {
-      console.log("Bye");
-
       console.log(error);
       toast({
         title: error.message,
@@ -85,7 +83,6 @@ const Login = () => {
     }
     setLoading(false);
   };
-  console.log("user", user);
 
   return (
     <VStack spacing="5px">
@@ -101,14 +98,16 @@ const Login = () => {
       </FormControl>
 
       <FormControl id="password" isInvalid={!!passwordError} isRequired>
-        <FormLabel> Password</FormLabel>
+        <FormLabel>Password</FormLabel>
         <InputGroup>
           <Input
             type={show1 ? "text" : "password"}
             value={password}
             placeholder="Enter Your Password"
             _placeholder={{ opacity: 0.5, color: "black" }}
-            onChange={(e) => setpw(e.target.value)}
+            onChange={
+              (e) => setpw(e.target.value)
+            }
           />
           <InputRightElement w="4rem">
             <Button
