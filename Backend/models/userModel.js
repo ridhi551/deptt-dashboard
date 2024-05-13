@@ -11,10 +11,10 @@ const userModel = mongoose.Schema(
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
     },
-    role: { type: String , required:true },
-    rollNumber: { type: String ,required:true },
+    role: { type: String, enum: ["admin", "user", "teacher"], default: "user" },
+    rollNumber: { type: String, required: true },
   },
- 
+
   {
     timestamps: true,
   }
