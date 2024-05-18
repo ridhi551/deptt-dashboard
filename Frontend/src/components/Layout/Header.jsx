@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import ProfileModal from "../Home/ProfileModal";
 import { Avatar, Navbar } from "flowbite-react";
 const Header = () => {
   const user = useSelector((state) => state.user?.userInfo);
-  const [show, setShow] = useState(false);
   return (
-    <div className="px-2 md:px-10 py-6">
+    <div className="px-2 md:px-10 py-6 w-full max-w-6xl mx-auto">
       <Navbar fluid rounded className="relative">
         <Navbar.Brand href="https://flowbite-react.com">
           <img
@@ -21,13 +18,13 @@ const Header = () => {
         </Navbar.Brand>
         <div className="flex md:order-2">
           {user ? (
-            <button className="cursor-pointer" onClick={() => setShow(!show)}>
+            <Link to={"./dashboard"} className="cursor-pointer">
               <Avatar
                 src={user?.pic}
                 className="size-10 rounded-2xl"
                 alt="Logo"
               />
-            </button>
+            </Link>
           ) : (
             <li>
               <Link
@@ -39,7 +36,6 @@ const Header = () => {
             </li>
           )}
 
-          {show && <ProfileModal isOpenProp={show} />}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse className="absolute md:relative top-full left-0 bg-white rounded ">
