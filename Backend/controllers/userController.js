@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 const jwttoken = require("../config/jwttoken");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic , role , rollNumber } = req.body;
+  const { name, email, password, pic , role , rollNumber , semester } = req.body;
   if (!name || !email || !password ) {
     res.status(400);
     throw new Error("Please enter the required inputs !");
@@ -20,7 +20,8 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     pic,
     role,
-    rollNumber
+    rollNumber,
+    semester
   });
 
   if (newUser) {
@@ -32,7 +33,7 @@ const registerUser = asyncHandler(async (req, res) => {
       pic: newUser.pic,
       role: newUser.role,
       rollNumber: newUser.rollNumber,
-
+      semester: newUser.semester,
       token: jwttoken(newUser.id),
     });
   } else {
@@ -58,6 +59,7 @@ const authUser = asyncHandler(async (req, res) => {
       pic: user.pic,
       role: user.role,
       rollNumber: user.rollNumber,
+      semester: user.semester,
       token: jwttoken(user.id),
     });
   } else {

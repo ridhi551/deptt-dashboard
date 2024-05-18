@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const pdfUploadRoutes = require("./routes/pdfUploadRoutes");
+const TeacherRoutes = require("./routes/TeacherRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 var cors = require("cors");
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/pdfUpload", pdfUploadRoutes);
+app.use("/api/v1/teacher", TeacherRoutes);
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

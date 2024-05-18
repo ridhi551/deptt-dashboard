@@ -13,6 +13,7 @@ const userModel = mongoose.Schema(
     },
     role: { type: String, enum: ["admin", "user", "teacher"], default: "user" },
     rollNumber: { type: String, required: true },
+    semester: { type: Number, default: null },
   },
 
   {

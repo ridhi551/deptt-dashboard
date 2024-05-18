@@ -37,6 +37,7 @@ const uploadCSV = async (req, res, next) => {
             gender: row.gender,
             mob: row.mob
         }));
+        console.log(csvData)
 
         for (const user of users) {
             const newUser = new ExtractedUserData(user);
@@ -47,10 +48,6 @@ const uploadCSV = async (req, res, next) => {
                 throw new Error('Error saving user data');
             }
         }
-
-
-      
-
 
         res.status(200).send('Data saved successfully');
 

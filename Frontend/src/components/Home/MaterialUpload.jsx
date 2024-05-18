@@ -14,11 +14,11 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const MaterialUpload = ({ onSave }) => {
+const MaterialUpload = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [assignmentName, setAssignmentName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const [semester, setSemester] = useState("");
+  const [semester, setSemester] = useState(1);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -32,7 +32,7 @@ const MaterialUpload = ({ onSave }) => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/v1/uploadMaterial",
+        "http://localhost:5000/api/v1/teacher/uploadAssignment",
         formData,
         {
           headers: {
@@ -40,7 +40,7 @@ const MaterialUpload = ({ onSave }) => {
           },
         }
       );
-      onSave(); // Call parent component's onSave function
+     
       setIsOpen(false);
     } catch (error) {
       console.error("Error uploading material:", error);
@@ -70,14 +70,14 @@ const MaterialUpload = ({ onSave }) => {
                 value={semester}
                 onChange={(e) => setSemester(e.target.value)}
               >
-                <option value="semester1">Semester 1</option>
-                <option value="semester2">Semester 2</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
                 {/* Add more options for other semesters */}
               </Select>
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Upload File</FormLabel>
-              <Input type="file" onChange={handleFileChange} />
+              <Input type="file" onChange={handleFileChange} accept="application/pdf" />
             </FormControl>
             <Button colorScheme="blue" mt={4} onClick={handleSubmit}>
               Save

@@ -46,7 +46,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-slate-200 min-h-screen w-80 ">
+    <div className=" border border-y-0 min-h-screen w-80 ">
       <div className="flex flex-col items-center gap-20 text-2xl font-semibold cursor-pointer">
         <img src={g_logo} alt="" className="size-32 mt-10" />
         <h1 onClick={() => navigate("comingsoon")}>Dashboard</h1>
@@ -55,7 +55,7 @@ const Home = () => {
         <h1 onClick={() => navigate("comingsoon")}>Updates</h1>
 
         {user?.role === "admin" && <UploadModal onSave={onSave} />}
-        {user?.role === "teacher" && <MaterialUpload onSave={onSave} />}
+        {user?.role === "teacher" || user?.role === "admin" && <MaterialUpload  />}
       </div>
     </div>
   );

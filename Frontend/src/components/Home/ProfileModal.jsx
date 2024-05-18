@@ -82,6 +82,7 @@ const handleLogout = () => {
                     <div className='flex flex-col gap-4'>
                     <h1 className='text-3xl'>{user?.name}</h1>
                     <h1 className='text-2xl'>{user?.email}</h1>
+                    
                     </div>
                 </ModalBody>
                 <ModalFooter className='flex gap-10'>
