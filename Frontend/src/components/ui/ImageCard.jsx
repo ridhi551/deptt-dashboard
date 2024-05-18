@@ -16,7 +16,7 @@ const ImageCard = ({ image, text, link, buttonText }) => {
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image src={image} borderRadius="lg" className="size-64 md:size-96" />
+        <Image src={image} borderRadius="lg" className="size-64 lg:size-96" />
         <Stack mt="6" spacing="3">
           <Heading size="md">{text}</Heading>
         </Stack>

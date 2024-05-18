@@ -1,16 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const MatrixDisplay = ({ matrix1, matrix2, days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] }) => {
-  const periods = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM'];
+const MatrixDisplay = ({
+  matrix1,
+  matrix2,
+  days = ["Mon", "Tue", "Wed", "Thu", "Fri"],
+}) => {
+  const periods = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM"];
 
   return (
-    <div className="flex flex-col lg:flex-row  justify-center mt-10">
+    <div className="flex flex-col md:flex-row justify-center mt-10">
       <table className="border border-collapse m-2">
         <thead>
           <tr>
             <th className="p-2">Days</th>
             {periods.map((period) => (
-              <th key={period} className="p-2">{period}</th>
+              <th key={period} className="p-2">
+                {period}
+              </th>
             ))}
           </tr>
         </thead>
@@ -21,11 +27,17 @@ const MatrixDisplay = ({ matrix1, matrix2, days = ['Mon', 'Tue', 'Wed', 'Thu', '
                 {days[rowIndex]}
               </td>
               {row.map((value, colIndex) => (
-                <td key={`${rowIndex}-${colIndex}`} className="p-2">
+                <td
+                  key={`${rowIndex}-${colIndex}`}
+                  className="p-2 hover:bg-gray-200"
+                >
                   {value}
                 </td>
               ))}
-              <td className="p-2" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
+              <td
+                className="p-2"
+                style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
+              >
                 {rowIndex === 3 ? "BREAK" : ""}
               </td>
             </tr>
@@ -37,7 +49,9 @@ const MatrixDisplay = ({ matrix1, matrix2, days = ['Mon', 'Tue', 'Wed', 'Thu', '
           <tr>
             <th className="p-2">Days</th>
             {periods.map((period) => (
-              <th key={period} className="p-2">{period}</th>
+              <th key={period} className="p-2">
+                {period}
+              </th>
             ))}
           </tr>
         </thead>
@@ -48,11 +62,17 @@ const MatrixDisplay = ({ matrix1, matrix2, days = ['Mon', 'Tue', 'Wed', 'Thu', '
                 {days[rowIndex]}
               </td>
               {row.map((value, colIndex) => (
-                <td key={`${rowIndex}-${colIndex}`} className="p-2">
+                <td
+                  key={`${rowIndex}-${colIndex}`}
+                  className="p-2 hover:bg-gray-200"
+                >
                   {value}
                 </td>
               ))}
-              <td className="p-2" style={{ writingMode: 'vertical-lr', textOrientation: 'mixed' }}>
+              <td
+                className="p-2"
+                style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
+              >
                 {rowIndex === 3 ? "B\nR\nE\nA\nK" : ""}
               </td>
             </tr>
