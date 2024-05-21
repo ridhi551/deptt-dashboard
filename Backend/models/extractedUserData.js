@@ -5,29 +5,35 @@ const extractedUserData = mongoose.Schema(
   {
    name: {
         type: String,
-     
-    },
-    email: {
-      type: String,
-      
-    },
-    rollNumber: {
-      type: String,
-    },
-    semester: { 
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+        
+      },
+      rollNumber: {
+        type: String,
+        required: true,
+      },
+      semester: { 
         type: String, 
-      
-    },
-    parentage: { 
+        required: true,
+        
+      },
+      parentage: { 
         type: String, 
-   
-    },
-    gender: { 
+        required: true,
+        
+      },
+      gender: { 
         type: String, 
-       
-    },
-    mob: { 
+        required: true,
+        
+      },
+      mob: { 
         type: String, 
+        required: true,
     },
     
 },

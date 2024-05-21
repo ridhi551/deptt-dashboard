@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button, Label, TextInput, Select, FileInput } from "flowbite-react";
+import axios from "axios";
 
 const MaterialUpload = () => {
   const [assignmentName, setAssignmentName] = useState("");
-  const [semester, setSemester] = useState("semester1");
+  const [semester, setSemester] = useState(1);
   const [file, setFile] = useState(null);
 
   const handleAssignmentNameChange = (event) => {
@@ -28,14 +29,14 @@ const MaterialUpload = () => {
 
       // For example, you can use FormData to send the form data to an API
       const formData = new FormData();
-      formData.append("assignmentName", assignmentName);
+      formData.append("name", assignmentName);
       formData.append("semester", semester);
       formData.append("file", file);
 
-      // Assuming you have an endpoint to handle the file upload
-      fetch("/api/upload-assignment", {
-        method: "POST",
-        body: formData,
+      axios.post("/teacher/uploadAssignment", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -78,14 +79,14 @@ const MaterialUpload = () => {
             value={semester}
             onChange={handleSemesterChange}
           >
-            <option value="semester1">Semester 1</option>
-            <option value="semester2">Semester 2</option>
-            <option value="semester3">Semester 3</option>
-            <option value="semester4">Semester 4</option>
-            <option value="semester4">Semester 5</option>
-            <option value="semester4">Semester 6</option>
-            <option value="semester4">Semester 7</option>
-            <option value="semester4">Semester 8</option>
+            <option value={1}>Semester 1</option>
+            <option value={2}>Semester 2</option>
+            <option value={3}>Semester 3</option>
+            <option value={4}>Semester 4</option>
+            <option value={5}>Semester 5</option>
+            <option value={6}>Semester 6</option>
+            <option value={7}>Semester 7</option>
+            <option value={8}>Semester 8</option>
           </Select>
         </div>
         <div>

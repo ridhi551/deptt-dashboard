@@ -45,7 +45,7 @@ const uploadCSV = async (req, res, next) => {
                 await newUser.save();
             } catch (error) {
                 console.error('Error saving user data:', error);
-                throw new Error('Error saving user data');
+                throw new Error('Error saving user data ,CSV data not found',error);
             }
         }
 
@@ -67,4 +67,15 @@ const uploadCSV = async (req, res, next) => {
     }
 };
 
-module.exports = { uploadCSV };
+//get all data from extractesd users model
+const getAllData = async (req, res, next) => {
+    try {
+        const data = await ExtractedUserData.find();
+        res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+};
+
+module.exports = { uploadCSV ,   getAllData};

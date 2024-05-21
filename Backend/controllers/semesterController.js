@@ -2,17 +2,18 @@ const asyncHandler = require("express-async-handler");
 const SemesterModel = require("../models/fileUploadModel");
 const fs = require('fs');
 
-// const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-
-const AWS = require("aws-sdk");
-require("aws-sdk/lib/maintenance_mode_message").suppress = true;
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 
 const { v4: uuidv4 } = require('uuid');
 
-const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+
+
+const s3Client = new S3Client({
   region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
 });
 
 
@@ -20,18 +21,23 @@ const saveSemester = asyncHandler(async (req, res) => {
   const { name, semester } = req.body;
 
   const file = req.file; 
-  console.log(file)
+
   const savedUid = uuidv4();
   const UploadParams = { 
-    Bucket: "pdfuploadgcet",
-    Key: `${savedUid}.pdf`,
+    Bucket: "skitii-badgeimages",
+    Key: `check/${savedUid}.pdf`,
     Body: fs.createReadStream(file.path),
     ContentType: file.mimetype,
   };
-  // await s3Client.send(new PutObjectCommand(UploadParams));
-  const data = await s3.upload(UploadParams).promise();
 
-  
+
+  try {
+    
+    await s3Client.send(new PutObjectCommand(UploadParams));
+  } catch (error) {
+    console.log(error)
+  }
+
 
   const savedSemester = await SemesterModel.create({
     name, 
