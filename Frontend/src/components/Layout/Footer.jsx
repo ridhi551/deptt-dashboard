@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900">
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <div className="mx-auto w-full max-w-6xl p-4 py-6 md:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="https://flowbite.com/" className="flex items-center">
@@ -21,14 +21,9 @@ const Footer = () => {
                 Resources
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-               
-                </li>
+                <li className="mb-4"></li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:underline"
-                  >
+                  <a href="#" className="hover:underline">
                     Tailwind CSS
                   </a>
                 </li>
@@ -40,18 +35,12 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a
-                    href="#"
-                    className="hover:underline "
-                  >
+                  <a href="#" className="hover:underline ">
                     Github
                   </a>
                 </li>
                 <li>
-                  <a
-                  href="#"
-                    className="hover:underline"
-                  >
+                  <a href="#" className="hover:underline">
                     Discord
                   </a>
                 </li>
@@ -76,14 +65,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 md:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2024{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
-             
-            </a>
-            . All Rights Reserved.
+            <a href="https://flowbite.com/" className="hover:underline"></a>.
+            All Rights Reserved.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
             <a
@@ -175,7 +162,6 @@ const Footer = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              
             </a>
           </div>
         </div>
