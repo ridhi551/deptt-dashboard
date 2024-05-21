@@ -15,7 +15,7 @@ const Auth = () => {
     }
   }, [navigate, user]);
   return (
-    <div className="flex flex-col p-10 md:flex-row md:items-center gap-10 md:justify-center items-center min-h-screen">
+    <div className="flex flex-col p-10 lg:flex-row lg:items-center gap-10 lg:justify-center items-center min-h-screen">
       <ImageCard
         image={student}
         text={"Login as Student"}

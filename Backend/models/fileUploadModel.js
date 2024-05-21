@@ -5,7 +5,7 @@ const fileUploadModel = mongoose.Schema({
     type: String,
   },
   semester: {
-    type: Number,
+    type: String,
   },
   url: {   //file     
     type: String,

@@ -1,12 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import SharedLayout from "./components/Layout/SharedLayout";
-import Home from "./Pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Auth from "./Pages/Auth";
 import AuthTabs from "./components/AuthTabs";
 import GeneratorTimeTable from "./Pages/GeneratorTimeTable";
-import ComingSoon from "./components/ComingSoon";
+import HeroDashboard from "./components/Dashboard/HeroDashboard";
+import UpdatesDashboard from "./components/Dashboard/UpdatesDashboard";
+import MaterialUpload from "./components/Dashboard/MaterialUpload";
+import UploadData from "./components/Dashboard/UploadData";
+import Home from "./Pages/Home";
+// import ResultDashboard from "./components/Dashboard/ResultDashboard";
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
 const router = createBrowserRouter([
   {
@@ -14,47 +18,49 @@ const router = createBrowserRouter([
     element: <SharedLayout />,
     children: [
       {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "",
+        path: "dashboard",
         element: <ProtectedRoute />,
         children: [
           {
-            path: "classes",
-            // element: <ClassPage />,
+            path: "",
+            element: <HeroDashboard />,
+          },
+          // {
+          //   path: "results",
+          //   element: <ResultDashboard />,
+          // },
+          {
+            path: "updates",
+            element: <UpdatesDashboard />,
           },
           {
-            path: "class/:id",
-            // element: <IndividualClass />,
-          },
-          {
-            path: "account",
-            // element: <AccountPage />,
-          },
-          {
-            path: "/timetable",
+            path: "timetable",
             element: <GeneratorTimeTable />,
-          }
-          ,
+          },
           {
-            path: "*",
-            element: <ComingSoon />,
-          }
+            path: "materialUpload",
+            element: <MaterialUpload />,
+          },
+          {
+            path: "uploadData",
+            element: <UploadData />,
+          },
         ],
       },
+      {
+        path: "auth",
+        element: <Auth />,
+      },
+      {
+        path: "auth/:role",
+        element: <AuthTabs />,
+      },
+      {
+        path:"/",
+        element:<Home/>
+      }
     ],
   },
-
-  {
-    path: "auth",
-    element: <Auth />,
-  },
-  {
-    path: "auth/:role",
-    element: <AuthTabs />,
-  }
 ]);
 const App = () => {
   return <RouterProvider router={router} />;
