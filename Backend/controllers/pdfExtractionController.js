@@ -45,7 +45,7 @@ const uploadCSV = async (req, res, next) => {
                 await newUser.save();
             } catch (error) {
                 console.error('Error saving user data:', error);
-                throw new Error('Error saving user data');
+                throw new Error('Error saving user data ,CSV data not found',error);
             }
         }
 
