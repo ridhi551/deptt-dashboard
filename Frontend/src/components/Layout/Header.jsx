@@ -38,7 +38,7 @@ const Header = () => {
 
           <Navbar.Toggle />
         </div>
-        <Navbar.Collapse className="absolute md:relative top-full left-0 bg-white rounded ">
+        <Navbar.Collapse className="absolute md:relative top-full z-20 left-0 bg-white rounded ">
           <Navbar.Link href="#" active>
             Home
           </Navbar.Link>
