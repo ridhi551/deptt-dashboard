@@ -1,24 +1,23 @@
+import React, { useState } from 'react';
 import {
   Table,
   Thead,
   Tbody,
-
   Tr,
   Th,
   Td,
   TableCaption,
   TableContainer,
-} from '@chakra-ui/react'
+  Select,
+} from '@chakra-ui/react';
 
+const CustomizedTables = ({ filteredUsers }) => {
 
-const CustomizedTables = ({users}) => {
-
-  //useEffect and call the api to get all users
- 
 
   return (
     <TableContainer>
-      <Table variant='striped' >
+     
+      <Table variant='striped'>
         <TableCaption>List of Users</TableCaption>
         <Thead>
           <Tr>
@@ -34,7 +33,7 @@ const CustomizedTables = ({users}) => {
           </Tr>
         </Thead>
         <Tbody>
-          {users?.map((user) => (
+          {filteredUsers?.map((user) => (
             <Tr key={user._id}>
               <Td>{user.name}</Td>
               <Td>{user.email}</Td>
@@ -48,10 +47,9 @@ const CustomizedTables = ({users}) => {
             </Tr>
           ))}
         </Tbody>
-      
       </Table>
     </TableContainer>
-  )
-}
+  );
+};
 
-export default CustomizedTables
+export default CustomizedTables;

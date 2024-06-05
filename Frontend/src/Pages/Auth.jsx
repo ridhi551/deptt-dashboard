@@ -19,7 +19,7 @@ const Auth = () => {
       <ImageCard
         image={student}
         text={"Login as Student"}
-        link={"./student"}
+        link={"./user"}
         buttonText={"Login"}
       />
       <ImageCard

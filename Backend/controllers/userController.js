@@ -33,7 +33,7 @@ const registerUser = asyncHandler(async (req, res) => {
       pic: newUser.pic,
       role: newUser.role,
       rollNumber: newUser.rollNumber,
-      semester: newUser.semester,
+      semester: newUser.semester,  // user semester
       token: jwttoken(newUser.id),
     });
   } else {

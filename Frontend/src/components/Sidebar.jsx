@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -8,11 +8,13 @@ import MessageIcon from "@mui/icons-material/Message";
 import BookIcon from "@mui/icons-material/Book";
 import LogoutIcon from "@mui/icons-material/Logout";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
+import Swal from "sweetalert2";
+import { logout } from "../redux/userSlice";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useSelector((state) => state.user?.userInfo);
-
+  const dispatch = useDispatch();
   const navLinks = [
     {
       name: "Dashboard",
@@ -55,7 +57,28 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-
+  const handleLogout = () => {
+   
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(logout());
+      
+        Swal.fire({
+          title: "Logged out!",
+          text: "You have been logged out successfully.",
+          icon: "success",
+        });
+      }
+    });
+  };
   return (
     <div
       className={`border-x rounded-xl mb-10 ml-10 ${
@@ -108,7 +131,9 @@ const Sidebar = () => {
               user?.role === "teacher"
                 ? "text-teacher-color"
                 : "text-student_Admin-color"
-            } font-bold  `}
+            } font-bold  `
+          }
+          onClick={handleLogout}
           >
             <LogoutIcon /> Log Out
           </button>

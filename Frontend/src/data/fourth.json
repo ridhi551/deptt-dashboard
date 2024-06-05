@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Dr. Jyoti Mahajan",
+    "sub": "Micro-controllers",
+    "sem": 6,
+    "tId": 12,
+    "id": 1
+  },
+  {
+    "name": "Dr. Bhawana Sharma",
+    "sub": "Compiler Design",
+    "sem": 6,
+    "tId": 13,
+    "id": 2
+  },
+  {
+    "name": "Mr. Akhil Sharma",
+    "sub": "OS",
+    "sem": 6,
+    "tId": 14,
+    "id": 3
+  },
+  {
+    "name": "Dr. Parul Mahajan",
+    "sub": "Managerial Economics",
+    "sem": 6,
+    "tId": 15,
+    "id": 4
+  },
+  {
+    "name": "Dr. Simmi Dutta",
+    "sub": "NPTEL",
+    "sem": 6,
+    "tId": 16,
+    "id": 5
+  },
+  {
+    "name": "Prabjot Singh",
+    "sub": "Computer Graphics",
+    "sem": 6,
+    "tId": 17,
+    "id": 6
+  },
+  {
+    "name": "Bilal",
+    "sub": "Data Science",
+    "sem": 8,
+    "tId": 18,
+    "id": 7
+  },
+  {
+    "name": "Respective Teacher",
+    "sub": "Elective Course",
+    "sem": 8,
+    "tId": 19,
+    "id": 8
+  },
+  {
+    "name": "Dr. Jyoti Mahajan",
+    "sub": "Java",
+    "sem": 4,
+    "tId": 20,
+    "id": 9
+  },
+  {
+    "name": "Dr. Bhawana Sharma",
+    "sub": "Digital Electronics",
+    "sem": 4,
+    "tId": 21,
+    "id": 10
+  },
+  {
+    "name": "Mr. Akhil Sharma",
+    "sub": "RDBMS",
+    "sem": 4,
+    "tId": 22,
+    "id": 11
+  },
+  {
+    "name": "Nerraj Dubey",
+    "sub": "COA",
+    "sem": 4,
+    "tId": 23,
+    "id": 12
+  },
+  {
+    "name": "Dr. Simmi Dutta",
+    "sub": "DSA",
+    "sem": 4,
+    "tId": 24,
+    "id": 13
+  },
+  {
+    "name": "Heera Saini",
+    "sub": "Discrete Mathematics",
+    "sem": 4,
+    "tId": 25,
+    "id": 14
+  }
+]

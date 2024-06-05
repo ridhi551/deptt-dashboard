@@ -1,54 +1,30 @@
+import { useSelector } from "react-redux";
+import data from  "../../data/fourth.json";
+
 const TeacherDashboard = () => {
-  const data = [
-    {
-      course: "Java",
-      semester: "first",
-    },
-    {
-      course: "Python",
-      semester: "second",
-    },
-    {
-      course: "C++",
-      semester: "third",
-    },
-    {
-      course: "C",
-      semester: "fourth",
-    },
-    {
-      course: "C#",
-      semester: "fifth",
-    },
-    {
-      course: "Ruby",
-      semester: "sixth",
-    },
-    {
-      course: "Javascript",
-      semester: "seventh",
-    },
-    {
-      course: "React",
-      semester: "eighth",
-    },
-  ];
+
+  const rollNumber = useSelector((state) => state.user.userInfo.rollNumber);
+  const filteredData = data.filter((item) => item.tId === rollNumber);
+  console.log(filteredData , rollNumber)
   return (
     <div>
       <h1 className="my-10 font-bold text-xl lg:text-3xl">Course in charge</h1>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {data.map((item, index) => (
+        {filteredData.map((item, index) => (
           <div
             key={index}
             className="h-72 border-teacher-color border-2   rounded-3xl  text-teacher-color flex flex-col"
           >
             <div className="h-2/3 p-6 bg-[#B3C3C8] w-full rounded-t-3xl">
               <h1 className="capitalize text-xl lg:text-4xl text-teacher-color font-bold">
-                {item.course}
+                {item.sub}
               </h1>
+              <p>
+                {item.name}
+              </p>
             </div>
             <h1 className="text-2xl p-3 font-semibold capitalize">
-              {item.semester} semester
+              {item.sem} semester
             </h1>
           </div>
         ))}
