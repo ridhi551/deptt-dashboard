@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="px-2 md:px-10 py-6 w-full max-w-6xl mx-auto">
       <Navbar fluid rounded className="relative">
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="/">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="mr-3 h-6 sm:h-9"

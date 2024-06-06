@@ -9,6 +9,8 @@ import HeroDashboard from "./components/Dashboard/HeroDashboard";
 import UpdatesDashboard from "./components/Dashboard/UpdatesDashboard";
 import MaterialUpload from "./components/Dashboard/MaterialUpload";
 import UploadData from "./components/Dashboard/UploadData";
+import NotFound from "./Pages/NotFound";
+import Home from "./Pages/Home";
 // import ResultDashboard from "./components/Dashboard/ResultDashboard";
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
 const router = createBrowserRouter([
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <SharedLayout />,
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "dashboard",
         element: <ProtectedRoute />,
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "auth/:role",
         element: <AuthTabs />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

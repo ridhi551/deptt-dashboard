@@ -20,31 +20,31 @@ const Sidebar = () => {
       name: "Dashboard",
       path: "./",
       icon: <DashboardIcon />,
-      roles: ["student", "teacher", "admin"],
+      roles: ["user", "teacher", "admin"],
     },
     {
       name: "Syllabus",
       path: "./syllabus",
       icon: <ArticleIcon />,
-      roles: ["student", "teacher"],
+      roles: ["user", "teacher"],
     },
     {
       name: "Time Table",
       path: "./timetable",
       icon: <BookIcon />,
-      roles: ["student", "teacher", "admin"],
+      roles: ["user", "teacher", "admin"],
     },
     {
       name: "Updates",
       path: "./updates",
       icon: <MessageIcon />,
-      roles: ["student", "teacher"],
+      roles: ["user", "teacher", "admin"],
     },
     {
       name: "Material Upload",
       path: "./materialUpload",
       icon: <UploadFileIcon />,
-      roles: ["teacher"],
+      roles: ["teacher", "user"],
     },
     {
       name: "Records",
@@ -58,7 +58,6 @@ const Sidebar = () => {
     setIsOpen(!isOpen);
   };
   const handleLogout = () => {
-   
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -70,7 +69,7 @@ const Sidebar = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(logout());
-      
+
         Swal.fire({
           title: "Logged out!",
           text: "You have been logged out successfully.",
@@ -131,9 +130,8 @@ const Sidebar = () => {
               user?.role === "teacher"
                 ? "text-teacher-color"
                 : "text-student_Admin-color"
-            } font-bold  `
-          }
-          onClick={handleLogout}
+            } font-bold  `}
+            onClick={handleLogout}
           >
             <LogoutIcon /> Log Out
           </button>

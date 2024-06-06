@@ -2,9 +2,9 @@ import { SparklesCore } from "../ui/Sparkles";
 
 export function HeroSection() {
   return (
-    <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-3xl text-xl lg:text-6xl font-bold text-center text-white relative z-20">
-      AcademIQ-Connect
+    <div className="py-40 w-full bg-white  flex flex-col items-center justify-center overflow-hidden rounded-md">
+      <h1 className="md:text-3xl text-xl lg:text-6xl font-bold text-center text-black relative z-20">
+        AcademIQ-Connect
       </h1>
       <div className="w-[40rem] h-40 relative">
         {/* Gradients */}
@@ -24,7 +24,7 @@ export function HeroSection() {
         />
 
         {/* Radial Gradient to prevent sharp edges */}
-        <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+        <div className="absolute inset-0 w-full h-full bg-white  [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
     </div>
   );
