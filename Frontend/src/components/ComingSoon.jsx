@@ -1,5 +1,4 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const ComingSoon = () => {
   const navigate = useNavigate();
@@ -9,10 +8,10 @@ const ComingSoon = () => {
       <div className="content-wrapper text-center">
         <h1 className="coming-soon-title text-5xl font-bold mb-6">
           Coming Soon! ✨ ️
-        
         </h1>
         <p className="coming-soon-message text-xl tracking-wider">
-          We're working hard to bring you something exciting. Stay tuned for updates! ⏳
+          We &apos;re working hard to bring you something exciting. Stay tuned
+          for updates! ⏳
         </p>
         <button
           onClick={() => navigate("/")}

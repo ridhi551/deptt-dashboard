@@ -30,7 +30,7 @@ const HeroDashboard = () => {
       {/* Teacher */}
       {user?.role === "teacher" && <TeacherDashboard />}
       {/* Student */}
-      {user?.role === "student" && <StudentDashboard />}
+      {user?.role === "user" && <StudentDashboard />}
     </div>
   );
 };

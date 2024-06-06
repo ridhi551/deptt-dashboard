@@ -1,54 +1,119 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const UpdatesDashboard = () => {
-  const updates = [
-    { id: 1, title: "Title 1", description: "Description 1" },
-    { id: 2, title: "Title 2", description: "Description 2" },
-    { id: 3, title: "Title 3", description: "Description 3" },
-    { id: 4, title: "Title 4", description: "Description 4" },
-    { id: 5, title: "Title 5", description: "Description 5" },
-    { id: 6, title: "Title 6", description: "Description 6" },
-    { id: 7, title: "Title 7", description: "Description 7" },
-    { id: 8, title: "Title 8", description: "Description 8" },
-    { id: 9, title: "Title 9", description: "Description 9" },
-    { id: 10, title: "Title 10", description: "Description 10" },
-    { id: 11, title: "Title 11", description: "Description 11" },
-    { id: 12, title: "Title 12", description: "Description 12" },
-    { id: 13, title: "Title 13", description: "Description 13" },
-    { id: 14, title: "Title 14", description: "Description 14" },
-    { id: 15, title: "Title 15", description: "Description 15" },
-    { id: 16, title: "Title 16", description: "Description 16" },
-    { id: 17, title: "Title 17", description: "Description 17" },
-    { id: 18, title: "Title 18", description: "Description 18" },
-    { id: 19, title: "Title 19", description: "Description 19" },
-    { id: 20, title: "Title 20", description: "Description 20" },
-  ];
-
+  const [updates, setUpdates] = useState([]);
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    const getAllupdates = async () => {
+      const { data } = await axios.get("/user/getUpdates", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setUpdates(data);
+    };
+    getAllupdates();
+  }, []);
+  const [selectedSender, setSelectedSender] = useState("");
+  console.log(selectedSender);
+  const handleSendUpdate = async () => {
+    await axios.post(
+      "/user/sendUpdate",
+      {
+        message,
+        reciever: selectedSender,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+  };
   const user = useSelector((state) => state.user?.userInfo);
   return (
     <div className="p-6">
       {user.role === "admin" && (
-        <div className="flex w-full max-w-5xl mx-auto gap-6">
-          <input
-            type="text"
-            className="p-4 w-full rounded-lg "
-            placeholder="Enter message"
-          />
-          <button className="text-white bg-blue-700 px-6  py-2 rounded-lg">
+        <form
+          onSubmit={handleSendUpdate}
+          className="flex w-full max-w-5xl mx-auto gap-6 items-start"
+        >
+          <div className="w-full">
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="p-4 w-full rounded-lg "
+              placeholder="Enter message"
+            />
+            <div className="flex gap-10 py-2">
+              {/* Add radio in which it will has options student or teacher */}
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="reciever"
+                  value="user"
+                  checked={selectedSender === "user"}
+                  onChange={(e) => setSelectedSender(e.target.value)}
+                />
+                <label htmlFor="student">Student</label>
+                <input
+                  type="radio"
+                  name="reciever"
+                  value="teacher"
+                  checked={selectedSender === "teacher"}
+                  onChange={(e) => setSelectedSender(e.target.value)}
+                />
+                <label htmlFor="teacher">Teacher</label>
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="text-white bg-student_Admin-color px-6  py-2 rounded-lg"
+          >
             Send
           </button>
-        </div>
+        </form>
       )}
       <div className="py-4 flex flex-col gap-4">
-        {updates.map((update) => (
-          <div
-            className="bg-blue-400 p-2 rounded-md text-white "
-            key={update.id}
-          >
-            <h1 className="font-semibold">{update.title}</h1>
-            <p className="text-sm">{update.description}</p>
+        <h1 className="text-lg lg:text-2xl p-2 lg:p-10 ">Latest Updates</h1>
+        {updates.length > 0 ? (
+          updates.map((update) => (
+            <div
+              className={`${
+                user?.role == "teacher"
+                  ? " bg-teacher-color "
+                  : " bg-student_Admin-color "
+              } p-4 lg:p-4 rounded-md text-white `}
+              style={{
+                boxShadow: "0 6px 10px rgba(0,0,0,0.3)",
+                borderRadius: "15px",
+              }}
+              key={update._id}
+            >
+              <h1 className="font-semibold">{update.message}</h1>
+              {user?.role === "admin" && (
+                <h6 className="text-sm">
+                  To: {update.reciever === "user" ? "Student" : "Teacher"}
+                </h6>
+              )}
+            </div>
+          ))
+        ) : (
+          <div className="px-10">
+            <div className="text-sm lg:text-xl ">
+              <p>No updates...</p>
+              <br />
+              <p>
+                Kindly refresh for{" "}
+                <span className="text-green-500 font-bold">updates.</span>
+              </p>
+            </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
