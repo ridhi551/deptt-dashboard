@@ -6,7 +6,7 @@ export function InfiniteMovingCardsDemo() {
   return (
     <div className=" rounded-md flex flex-col antialiased bg-white  items-center justify-center relative overflow-hidden">
       <InfiniteMovingCards
-        items={testimonials}
+        items={testimonials} 
         direction="right"
         speed="slow"
       />
