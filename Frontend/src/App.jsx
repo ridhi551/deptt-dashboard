@@ -11,8 +11,10 @@ import MaterialUpload from "./components/Dashboard/MaterialUpload";
 import NotFound from "./Pages/NotFound";
 import Home from "./Pages/Home";
 import RecordData from "./components/Dashboard/RecordData";
+import UploadCSV from "./components/Dashboard/UploadCSV";
 // import ResultDashboard from "./components/Dashboard/ResultDashboard";
-axios.defaults.baseURL = `${import.meta.env.VITE_HOST_URL}/api/v1`;
+// axios.defaults.baseURL = `${import.meta.env.VITE_HOST_URL}/api/v1`;
+axios.defaults.baseURL = "http://localhost:5000/api/v1";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,10 +32,10 @@ const router = createBrowserRouter([
             path: "",
             element: <HeroDashboard />,
           },
-          // {
-          //   path: "results",
-          //   element: <ResultDashboard />,
-          // },
+          {
+            path: "uploadcsv",
+            element: <UploadCSV />,
+          },
           {
             path: "updates",
             element: <UpdatesDashboard />,

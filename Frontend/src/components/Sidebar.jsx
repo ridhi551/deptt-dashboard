@@ -52,6 +52,12 @@ const Sidebar = () => {
       icon: <UploadFileIcon />,
       roles: ["admin"],
     },
+    {
+      name: "Register",
+      path: "./uploadcsv",
+      icon: <UploadFileIcon />,
+      roles: ["admin"],
+    },
   ];
 
   const toggleSidebar = () => {
