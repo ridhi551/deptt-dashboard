@@ -4,7 +4,7 @@ import data from  "../../data/fourth.json";
 const TeacherDashboard = () => {
 
   const rollNumber = useSelector((state) => state.user.userInfo.rollNumber);
-  const filteredData = data.filter((item) => item.tId === rollNumber);
+  const filteredData = data.filter((item) => item.tId === rollNumber); 
   console.log(filteredData , rollNumber)
   return (
     <div>

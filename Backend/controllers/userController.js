@@ -2,6 +2,8 @@ const asyncHandler = require("express-async-handler"); //It HANDLES all the erro
 const User = require("../models/userModel");
 const jwttoken = require("../config/jwttoken");
 
+
+//Saving The user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic , role , rollNumber , semester } = req.body;
   if (!name || !email || !password ) {
@@ -34,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
       role: newUser.role,
       rollNumber: newUser.rollNumber,
       semester: newUser.semester,  // user semester
-      token: jwttoken(newUser.id),
+      token: jwttoken(newUser.id), 
     });
   } else {
     res.status(400);

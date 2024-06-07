@@ -12,9 +12,9 @@ const protect = asyncHandler (async ( req , res , next ) =>{
           token = req.headers.authorization.split(" ")[1];  // In the form {Bearer klamlks bkakjsa} we  dont want the word Bearer 
     
           //decodes token id
-          const decoded = jwt.verify(token, process.env.JWT_SECRET);
+          const decoded = jwt.verify(token, process.env.JWT_SECRET);  // id
     
-          req.user = await User.findById(decoded.id).select("-password"); // Dont want password
+          req.user = await User.findById(decoded.id).select("-password"); // Dont want password   --->  
     
           next();
         } catch (error) {
