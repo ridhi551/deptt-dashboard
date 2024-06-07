@@ -8,10 +8,12 @@ import GeneratorTimeTable from "./Pages/GeneratorTimeTable";
 import HeroDashboard from "./components/Dashboard/HeroDashboard";
 import UpdatesDashboard from "./components/Dashboard/UpdatesDashboard";
 import MaterialUpload from "./components/Dashboard/MaterialUpload";
-import UploadData from "./components/Dashboard/UploadData";
 import NotFound from "./Pages/NotFound";
 import Home from "./Pages/Home";
+import RecordData from "./components/Dashboard/RecordData";
+import UploadCSV from "./components/Dashboard/UploadCSV";
 // import ResultDashboard from "./components/Dashboard/ResultDashboard";
+// axios.defaults.baseURL = `${import.meta.env.VITE_HOST_URL}/api/v1`;
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
 const router = createBrowserRouter([
   {
@@ -30,10 +32,10 @@ const router = createBrowserRouter([
             path: "",
             element: <HeroDashboard />,
           },
-          // {
-          //   path: "results",
-          //   element: <ResultDashboard />,
-          // },
+          {
+            path: "uploadcsv",
+            element: <UploadCSV />,
+          },
           {
             path: "updates",
             element: <UpdatesDashboard />,
@@ -47,8 +49,8 @@ const router = createBrowserRouter([
             element: <MaterialUpload />,
           },
           {
-            path: "uploadData/:id",
-            element: <UploadData />,
+            path: "records",
+            element: <RecordData />,
           },
         ],
       },

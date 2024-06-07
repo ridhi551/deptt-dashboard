@@ -3,14 +3,14 @@ import { Button, Label, TextInput, Select, FileInput } from "flowbite-react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const MaterialUpload = () => {
-  const [assignmentName, setAssignmentName] = useState("");
+const RecordData = () => {
+  const [syllabusName, setsyllabusName] = useState("");
   const [semester, setSemester] = useState(1);
   const [file, setFile] = useState(null);
   const [allUploads, setAllUploads] = useState([]);
   const user = useSelector((state) => state.user?.userInfo);
-  const handleAssignmentNameChange = (event) => {
-    setAssignmentName(event.target.value);
+  const handleSyllabusNameChange = (event) => {
+    setsyllabusName(event.target.value);
   };
 
   const handleSemesterChange = (event) => {
@@ -22,20 +22,20 @@ const MaterialUpload = () => {
   };
 
   const handleSubmit = () => {
-    if (assignmentName && semester && file) {
+    if (syllabusName && semester && file) {
       // You can handle the form submission logic here
-      console.log("Assignment Name:", assignmentName);
+      console.log("Syllabus Name:", syllabusName);
       console.log("Semester:", semester);
       console.log("File uploaded:", file.name);
 
       // For example, you can use FormData to send the form data to an API
       const formData = new FormData();
-      formData.append("name", assignmentName);
+      formData.append("name", `Syllabus-${syllabusName}`);
       formData.append("semester", semester);
       formData.append("file", file);
 
       axios
-        .post("/teacher/uploadAssignment", formData, {
+        .post("/teacher/uploadRecord", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -55,7 +55,7 @@ const MaterialUpload = () => {
   useEffect(() => {
     const getAllMaterial = async () => {
       try {
-        const response = await axios.get("/user/getAllMaterial", {
+        const response = await axios.get("/user/getAllRecords", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -69,22 +69,22 @@ const MaterialUpload = () => {
   }, [user?.semester]);
   return (
     <div className="p-10 text-xs md:text-2xl">
-      {user?.role == "teacher" && (
+      {user?.role == "admin" && (
         <form
           className="flex max-w-4xl w-full mx-auto flex-col gap-4"
           onSubmit={handleSubmit}
         >
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="assignmentName" value="Name of Assignment" />
+              <Label htmlFor="syllabusName" value="Name of Syllabus" />
             </div>
             <TextInput
-              id="assignmentName"
+              id="syllabusName"
               type="text"
-              placeholder="Enter the assignment name"
+              placeholder="Enter the Syllabus name"
               required
-              value={assignmentName}
-              onChange={handleAssignmentNameChange}
+              value={syllabusName}
+              onChange={handleSyllabusNameChange}
             />
           </div>
           <div>
@@ -125,37 +125,40 @@ const MaterialUpload = () => {
       <div className="py-10">
         {allUploads.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2  gap-10 items-start sm:items-center w-full  ">
-            {allUploads.map((upload) => (
-              <div
-                key={upload._id}
-                className="bg-gray-200 rounded-3xl flex gap-10 items-center   lg:gap-12 flex-col p-10 lg:flex-row group"
-                style={{
-                  boxShadow: "0 6px 10px rgba(0,0,0,0.3)",
-                  borderRadius: "15px",
-                }}
-              >
-                <div className="  h-36 overflow-hidden ">
-                  <img
-                    src={upload.url}
-                    alt=""
-                    className="group-hover:scale-105  duration-300 h-full w-full object-cover"
-                  />
+            {allUploads.map((upload) => {
+              const subName = upload.name;
+              return (
+                <div
+                  key={upload._id}
+                  className="bg-gray-200 rounded-3xl flex gap-10 items-center   lg:gap-12 flex-col p-10 lg:flex-row group"
+                  style={{
+                    boxShadow: "0 6px 10px rgba(0,0,0,0.3)",
+                    borderRadius: "15px",
+                  }}
+                >
+                  <div className="  h-36 overflow-hidden ">
+                    <img
+                      src={upload.url}
+                      alt=""
+                      className="group-hover:scale-105  duration-300 h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="w-2/3">
+                    <h3 className="text-lg">
+                      Syllabus Subject:{" "}
+                      <span className="font-bold">{subName.split("-")[1]}</span>
+                    </h3>
+                    <p className="text-xl">
+                      Link:
+                      <a href={upload.url}>
+                        {" "}
+                        <span className="font-bold">Download</span>
+                      </a>
+                    </p>
+                  </div>
                 </div>
-                <div className="">
-                  <h3 className="text-xl">
-                    Assignment Subject:{" "}
-                    <span className="font-bold">{upload.name}</span>
-                  </h3>
-                  <p className="text-xl">
-                    Link:
-                    <a href={upload.url}>
-                      {" "}
-                      <span className="font-bold">Download</span>
-                    </a>
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           user?.role !== "teacher" && (
@@ -173,4 +176,4 @@ const MaterialUpload = () => {
   );
 };
 
-export default MaterialUpload;
+export default RecordData;

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Label, FileInput } from "flowbite-react";
 import CustomizedTables from "./CustomizedTables";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Select } from "@chakra-ui/react";
 
-const UploadData = () => {
+const UploadCSV = () => {
   const [file, setFile] = useState(null);
   const [users, setUsers] = useState([]);
-  
-  const [selectedSemester, setSelectedSemester] = useState('all');
+
+  const [selectedSemester, setSelectedSemester] = useState("all");
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -33,33 +32,33 @@ const UploadData = () => {
             icon: "success",
             title: "Your data has been uploaded.",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           setFile(null);
-          fetchUsers();  // Call fetchUsers again to refresh the data
+          fetchUsers(); // Call fetchUsers again to refresh the data
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error);
           Swal.fire({
-            title: 'Error',
+            title: "Error",
             text: error.response.data.message,
-            icon: 'error',
-            confirmButtonText: 'OK'
+            icon: "error",
+            confirmButtonText: "OK",
           });
         });
     } else {
       Swal.fire({
-        title: 'Warning',
-        text: 'No file selected!',
-        icon: 'warning',
-        confirmButtonText: 'OK'
+        title: "Warning",
+        text: "No file selected!",
+        icon: "warning",
+        confirmButtonText: "OK",
       });
     }
   };
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('pdfUpload/getAllData');
+      const response = await axios.get("pdfUpload/getAllData");
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -67,16 +66,17 @@ const UploadData = () => {
   };
 
   useEffect(() => {
-    fetchUsers(); 
+    fetchUsers();
   }, []);
 
   const handleSemesterChange = (event) => {
     setSelectedSemester(event.target.value);
   };
 
-  const filteredUsers = selectedSemester === 'all' 
-    ? users 
-    : users.filter(user => user.semester === selectedSemester);
+  const filteredUsers =
+    selectedSemester === "all"
+      ? users
+      : users.filter((user) => user.semester === selectedSemester);
   return (
     <>
       <form
@@ -96,10 +96,10 @@ const UploadData = () => {
         </div>
         <Button type="submit">Submit</Button>
       </form>
-      <select 
-        placeholder="Select Semester" 
+      <select
+        placeholder="Select Semester"
         onChange={handleSemesterChange}
-        className="mb-10"
+        className="mb-10 ml-10"
       >
         <option value="all">All</option>
         <option value="2">2</option>
@@ -108,9 +108,9 @@ const UploadData = () => {
         <option value="8">8</option>
       </select>
 
-      <CustomizedTables filteredUsers={filteredUsers}/>
+      <CustomizedTables filteredUsers={filteredUsers} />
     </>
   );
 };
 
-export default UploadData;
+export default UploadCSV;
