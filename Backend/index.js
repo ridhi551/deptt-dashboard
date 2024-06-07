@@ -13,7 +13,11 @@ var cors = require("cors");
 dotenv.config();
 connectDB();
 app.use(express.json());
-const allowedOrigins = ["http://localhost:5173", "http://localhost:4000"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:4000",
+  process.env.HOST_URL,
+];
 
 const corsOptions = {
   origin: (origin, callback) => {
