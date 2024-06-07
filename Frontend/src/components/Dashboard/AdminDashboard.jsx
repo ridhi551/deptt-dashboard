@@ -1,39 +1,31 @@
+
+import {useNavigate} from "react-router-dom"
+
 const AdminDashboard = () => {
+
+  const navigate = useNavigate()
+
   const data = [
-    {
-      semester: "first",
-      img: "",
-      link: "",
-    },
+ 
     {
       semester: "second",
       img: "",
       link: "",
+      num:2
     },
-    {
-      semester: "third",
-      img: "",
-      link: "",
-    },
+
     {
       semester: "fourth",
       img: "",
       link: "",
+      num:4
     },
-    {
-      semester: "fifth",
-      img: "",
-      link: "",
-    },
+ 
     {
       semester: "sixth",
       img: "",
       link: "",
-    },
-    {
-      semester: "seventh",
-      img: "",
-      link: "",
+      num:6
     },
     {
       semester: "eighth",
@@ -41,6 +33,11 @@ const AdminDashboard = () => {
       link: "",
     },
   ];
+
+  const handleClick =(num)=>{
+    navigate(`uploadData/${num}`)
+  }
+
   return (
     <div>
       <h1 className="my-10 font-bold text-xl lg:text-3xl">Semesters</h1>
@@ -54,7 +51,8 @@ const AdminDashboard = () => {
               <h1 className="capitalize text-xl lg:text-2xl font-bold">
                 {item.semester} semester
               </h1>
-              <button className=" py-3 px-14 text-white  font-bold text-sm lg:text-xl border-2 border-student_Admin-color rounded-full bg-student_Admin-color duration-300 active:scale-90 ">
+              <button className=" py-3 px-14 text-white  font-bold text-sm lg:text-xl border-2 border-student_Admin-color rounded-full bg-student_Admin-color duration-300 active:scale-90 "
+              onClick={()=>handleClick(item.num)}>
                 View
               </button>
             </div>
