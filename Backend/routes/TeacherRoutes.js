@@ -8,5 +8,8 @@ const router = express.Router();
 router
   .route("/uploadAssignment")
   .post(multerUpload.single("file"), protect, saveSemester);
+router
+  .route("/uploadRecord")
+  .post(multerUpload.single("file"), protect, saveSemester);
 
 module.exports = router;

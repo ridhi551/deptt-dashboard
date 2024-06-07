@@ -4,7 +4,6 @@ const jwttoken = require("../config/jwttoken");
 const Update = require("../models/Updates");
 const SemesterModel = require("../models/fileUploadModel");
 
-
 //Saving The user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, pic, role, rollNumber, semester } = req.body;
@@ -66,7 +65,7 @@ const authUser = asyncHandler(async (req, res) => {
       semester: user.semester,
       token: jwttoken(user.id),
     });
-  } else { 
+  } else {
     res.status(400);
     throw new Error("Failed to Login account");
   }
@@ -114,6 +113,12 @@ const handleGetAllMaterialUploads = asyncHandler(async (req, res) => {
   });
   res.send(uploads);
 });
+const handleGetAllRecords = asyncHandler(async (req, res) => {
+  const records = await SemesterModel.find({
+    name: { $regex: /^Syllabus-/ },
+  });
+  res.send(records);
+});
 module.exports = {
   registerUser,
   authUser,
@@ -121,4 +126,5 @@ module.exports = {
   sendUpdate,
   getUpdates,
   handleGetAllMaterialUploads,
+  handleGetAllRecords,
 };
