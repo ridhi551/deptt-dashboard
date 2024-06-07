@@ -17,7 +17,7 @@ const UpdatesDashboard = () => {
     getAllupdates();
   }, []);
   const [selectedSender, setSelectedSender] = useState("");
-  console.log(selectedSender);
+
   const handleSendUpdate = async () => {
     await axios.post(
       "/user/sendUpdate",

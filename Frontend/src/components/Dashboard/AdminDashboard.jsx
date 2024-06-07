@@ -9,27 +9,27 @@ const AdminDashboard = () => {
  
     {
       semester: "second",
-      img: "",
+      img: "https://i.pinimg.com/564x/1f/6d/59/1f6d5969512a6c19f9fe8e377220f158.jpg",
       link: "",
       num:2
     },
 
     {
       semester: "fourth",
-      img: "",
+      img: "https://i.pinimg.com/564x/a4/3a/83/a43a83480427896fd824280b44939830.jpg",
       link: "",
       num:4
     },
  
     {
       semester: "sixth",
-      img: "",
+      img: "https://i.pinimg.com/736x/d8/d0/7e/d8d07e450d6e57e97eee91117330fdc1.jpg",
       link: "",
       num:6
     },
     {
       semester: "eighth",
-      img: "",
+      img: "https://i.pinimg.com/564x/77/47/10/774710a5194c971f0464d9d72b5bb72c.jpg",
       link: "",
     },
   ];
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="px-10 py-12 border-student_Admin-color border-2 bg-[#7878aa80]  rounded-3xl  text-student_Admin-color flex items-center justify-between"
+            className={`px-10 py-12 border-student_Admin-color border-2  rounded-3xl bg-purple-100 text-student_Admin-color flex items-center justify-between`}
           >
             <div className="flex flex-col gap-2 items-start justify-center">
               <h1 className="capitalize text-xl lg:text-2xl font-bold">
@@ -56,7 +56,8 @@ const AdminDashboard = () => {
                 View
               </button>
             </div>
-            <img src={item.img} alt={item.semester} />
+              <img src={item.img} alt=""  className="size-40 rounded-3xl"/>
+            
           </div>
         ))}
       </div>

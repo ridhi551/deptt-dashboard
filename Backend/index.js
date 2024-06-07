@@ -6,7 +6,7 @@ const userRoutes = require("./routes/userRoutes");
 const pdfUploadRoutes = require("./routes/pdfUploadRoutes");
 const TeacherRoutes = require("./routes/TeacherRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
-const path = require("path");
+const path = require("path"); 
 var cors = require("cors");
 
 // Connect db
@@ -64,7 +64,9 @@ const start = async () => {
     app.listen(Port, () => {
       console.log(`Server is running on port ${Port}`);
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 start();

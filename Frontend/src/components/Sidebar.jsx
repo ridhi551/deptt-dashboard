@@ -23,12 +23,6 @@ const Sidebar = () => {
       roles: ["user", "teacher", "admin"],
     },
     {
-      name: "Syllabus",
-      path: "./syllabus",
-      icon: <ArticleIcon />,
-      roles: ["user", "teacher"],
-    },
-    {
       name: "Time Table",
       path: "./timetable",
       icon: <BookIcon />,
@@ -47,14 +41,14 @@ const Sidebar = () => {
       roles: ["teacher", "user"],
     },
     {
-      name: "Records",
+      name: "Syllabus",
       path: "./records",
       icon: <UploadFileIcon />,
-      roles: ["admin"],
+      roles: ["admin","teacher", "user"],
     },
     {
       name: "Register",
-      path: "./uploadcsv",
+      path: "./uploadData",
       icon: <UploadFileIcon />,
       roles: ["admin"],
     },

@@ -3,9 +3,11 @@ const fs = require("fs");
 const ExtractedUserData = require("../models/extractedUserData");
 
 const uploadCSV = async (req, res, next) => {
+  
   try {
     const csvData = await new Promise((resolve, reject) => {
       const results = [];
+
       fs.createReadStream(req.file?.path)
         .pipe(csvParser())
         .on("data", (data) => {
@@ -41,7 +43,7 @@ const uploadCSV = async (req, res, next) => {
       gender: row.gender,
       mob: row.mob,
     }));
-    console.log(csvData);
+
 
     for (const user of users) {
       const newUser = new ExtractedUserData(user);

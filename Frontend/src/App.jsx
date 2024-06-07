@@ -12,6 +12,7 @@ import NotFound from "./Pages/NotFound";
 import Home from "./Pages/Home";
 import RecordData from "./components/Dashboard/RecordData";
 import UploadCSV from "./components/Dashboard/UploadCSV";
+import CoursePage from "./Pages/CoursePage";
 // import ResultDashboard from "./components/Dashboard/ResultDashboard";
 // axios.defaults.baseURL = `${import.meta.env.VITE_HOST_URL}/api/v1`;
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             element: <HeroDashboard />,
           },
           {
-            path: "uploadcsv",
+            path: "uploadData/:id?",
             element: <UploadCSV />,
           },
           {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             path: "records",
             element: <RecordData />,
           },
+          {
+            path:"course/:sub",
+            element:<CoursePage/>
+          }
         ],
       },
       {

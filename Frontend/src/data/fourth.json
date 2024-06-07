@@ -2,99 +2,127 @@
   {
     "name": "Dr. Jyoti Mahajan",
     "sub": "Micro-controllers",
-    "sem": 6,
+    "sem": 2,
     "tId": 12,
-    "id": 1
+    "id": 1,
+    "img": "https://example.com/images/micro-controllers.jpg",
+    "description": "Explore the world of micro-controllers and learn how to build embedded systems."
   },
   {
     "name": "Dr. Bhawana Sharma",
     "sub": "Compiler Design",
-    "sem": 6,
+    "sem": 2,
     "tId": 13,
-    "id": 2
+    "id": 2,
+    "img": "https://example.com/images/compiler-design.jpg",
+    "description": "Dive deep into the intricacies of compiler design and understand how programming languages are translated into machine code."
   },
   {
     "name": "Mr. Akhil Sharma",
     "sub": "OS",
-    "sem": 6,
-    "tId": 14,
-    "id": 3
+    "sem": 2,
+    "tId": 13,
+    "id": 3,
+    "img": "https://example.com/images/os.jpg",
+    "description": "Learn about operating systems and how they manage computer hardware and software resources."
   },
   {
     "name": "Dr. Parul Mahajan",
     "sub": "Managerial Economics",
-    "sem": 6,
-    "tId": 15,
-    "id": 4
+    "sem": 2,
+    "tId": 13,
+    "id": 4,
+    "img": "https://example.com/images/managerial-economics.jpg",
+    "description": "Gain insights into managerial decision-making processes and economic principles applied in business."
   },
   {
     "name": "Dr. Simmi Dutta",
     "sub": "NPTEL",
     "sem": 6,
     "tId": 16,
-    "id": 5
+    "id": 5,
+    "img": "https://example.com/images/nptel.jpg",
+    "description": "Access high-quality educational content from NPTEL and expand your knowledge across various disciplines."
   },
   {
     "name": "Prabjot Singh",
     "sub": "Computer Graphics",
     "sem": 6,
     "tId": 17,
-    "id": 6
+    "id": 6,
+    "img": "https://example.com/images/computer-graphics.jpg",
+    "description": "Explore the fundamentals of computer graphics and develop skills in rendering, modeling, and animation."
   },
   {
     "name": "Bilal",
     "sub": "Data Science",
     "sem": 8,
     "tId": 18,
-    "id": 7
+    "id": 7,
+    "img": "https://example.com/images/data-science.jpg",
+    "description": "Discover the power of data science and learn techniques for extracting insights from large datasets."
   },
   {
     "name": "Respective Teacher",
     "sub": "Elective Course",
     "sem": 8,
     "tId": 19,
-    "id": 8
+    "id": 8,
+    "img": "https://example.com/images/elective-course.jpg",
+    "description": "Choose from a range of elective courses tailored to your interests and career goals."
   },
   {
     "name": "Dr. Jyoti Mahajan",
     "sub": "Java",
     "sem": 4,
     "tId": 20,
-    "id": 9
+    "id": 9,
+    "img": "https://example.com/images/java.jpg",
+    "description": "Master the Java programming language and build robust, scalable applications for various platforms."
   },
   {
     "name": "Dr. Bhawana Sharma",
     "sub": "Digital Electronics",
     "sem": 4,
     "tId": 21,
-    "id": 10
+    "id": 10,
+    "img": "https://example.com/images/digital-electronics.jpg",
+    "description": "Explore the world of digital electronics and learn about circuits, logic gates, and digital systems."
   },
   {
     "name": "Mr. Akhil Sharma",
     "sub": "RDBMS",
     "sem": 4,
     "tId": 22,
-    "id": 11
+    "id": 11,
+    "img": "https://example.com/images/rdbms.jpg",
+    "description": "Discover relational database management systems and learn how to design and manage databases efficiently."
   },
   {
     "name": "Nerraj Dubey",
     "sub": "COA",
     "sem": 4,
     "tId": 23,
-    "id": 12
+    "id": 12,
+    "img": "https://example.com/images/coa.jpg",
+    "description": "Gain insights into computer organization and architecture and understand the structure and operation of computer systems."
   },
   {
     "name": "Dr. Simmi Dutta",
     "sub": "DSA",
     "sem": 4,
     "tId": 24,
-    "id": 13
+    "id": 13,
+    "img": "https://example.com/images/dsa.jpg",
+    "description": "Explore the fundamentals of data structures and algorithms and learn essential techniques for efficient problem-solving."
   },
   {
     "name": "Heera Saini",
     "sub": "Discrete Mathematics",
     "sem": 4,
     "tId": 25,
-    "id": 14
+    "id": 14,
+    "img": "https://example.com/images/discrete-mathematics.jpg",
+    "description": "Study discrete mathematics and its applications in computer science, cryptography, and other fields."
   }
 ]

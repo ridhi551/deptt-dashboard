@@ -1,20 +1,22 @@
 import { useSelector } from "react-redux";
 import data from  "../../data/fourth.json";
+import { useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
   const semester = useSelector((state) => state.user.userInfo.semester);
+  const navigate = useNavigate()
 
-  // Filter data based on the user's semester
+ 
   const filteredData = data.filter(item => item.sem === semester);
 
   return (
     <div className="flex flex-col-reverse lg:flex-row justify-between p-2 gap-2">
-      {/* Enrolled Courses */}
+    
       <div className="lg:w-2/3">
         <h1 className="font-bold text-xl lg:text-3xl pt-10">
           Enrolled Courses
         </h1>
-        {/* Courses */}
+   
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 py-10">
           {filteredData?.map((item, index) => (
             <div
@@ -25,7 +27,8 @@ const StudentDashboard = () => {
                 <h1 className="capitalize text-xl lg:text-2xl font-bold">
                   {item.sub}
                 </h1>
-                <button className="py-3 px-14 text-white font-bold text-sm lg:text-xl border-2 border-student_Admin-color rounded-full bg-student_Admin-color duration-300 active:scale-90">
+                <button className="py-3 px-14 text-white font-bold text-sm lg:text-xl border-2 border-student_Admin-color rounded-full bg-student_Admin-color duration-300 active:scale-90"
+                onClick={()=>navigate(`course/${item.sub}`)}>
                   View
                 </button>
               </div>
