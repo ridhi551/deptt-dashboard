@@ -48,7 +48,7 @@ const Sidebar = () => {
     },
     {
       name: "Records",
-      path: "./uploadData",
+      path: "./records",
       icon: <UploadFileIcon />,
       roles: ["admin"],
     },

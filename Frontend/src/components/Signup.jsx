@@ -6,6 +6,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Select,
   VStack,
   useToast,
 } from "@chakra-ui/react";
@@ -21,7 +22,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [rollNumber, setRollNumber] = useState(); 
+  const [rollNumber, setRollNumber] = useState();
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
   const [nameError, setNameError] = useState("");
@@ -29,7 +30,7 @@ const Signup = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmError, setConfirmError] = useState("");
   const [rollNumberError, setRollNumberError] = useState("");
-  const [semester , setSemester] = useState("")
+  const [semester, setSemester] = useState(1);
   const [semesterError, setSemesterError] = useState("");
   const toast = useToast();
   const { role } = useParams();
@@ -109,7 +110,7 @@ const Signup = () => {
     setPasswordError("");
     setConfirmError("");
     setRollNumberError("");
-    setSemesterError("")
+    setSemesterError("");
 
     if (!name) {
       setNameError("Name is required");
@@ -129,13 +130,13 @@ const Signup = () => {
 
       return;
     }
-    if (!rollNumber) {
+    if (role != "admin" && !rollNumber) {
       setRollNumberError("Roll number is required");
       setLoading(false);
 
       return;
     }
-    if (!semester) {
+    if (role != "admin" && !semester) {
       setSemesterError("Semester is required");
       setLoading(false);
 
@@ -177,14 +178,14 @@ const Signup = () => {
         pic,
         role,
         semester,
-        rollNumber,
+        rollNumber: role == "admin" ? 1 : rollNumber,
       });
       setName("");
       setEmail("");
       setPassword("");
       setConfirm("");
       setRollNumber("");
-      setSemester("")
+      setSemester("");
       setPic("");
       setTimeout(() => {
         window.location.reload();
@@ -231,28 +232,51 @@ const Signup = () => {
         ></Input>
         <FormErrorMessage>{emailError}</FormErrorMessage>
       </FormControl>
-      <FormControl id="roll-number" isInvalid={!!rollNumberError} isRequired>
-      <FormLabel>{role === "teacher" ? "Teacher ID" : "Roll Number"}</FormLabel>
-        <Input
-          placeholder={role === "teacher" ? "Enter Your Teacher ID" : "Enter Your Roll Number"}
-          value={rollNumber}
-          type="number"
-          _placeholder={{ opacity: 0.5, color: "black" }}
-          onChange={(e) => setRollNumber(e.target.value)}
-        ></Input>
-        <FormErrorMessage>{rollNumberError}</FormErrorMessage>
-      </FormControl>
-      <FormControl id="semester" isInvalid={!!semesterError} isRequired>
-        <FormLabel> Semester</FormLabel>
-        <Input
-          placeholder="Enter Your Semester"
-          value={semester}
-          _placeholder={{ opacity: 0.5, color: "black" }}
-          onChange={(e) => setSemester(e.target.value)}
-        ></Input>
-        <FormErrorMessage>{semesterError}</FormErrorMessage>
-      </FormControl>
+      {role !== "admin" && (
+        <>
+          <FormControl
+            id="roll-number"
+            isInvalid={!!rollNumberError}
+            isRequired
+          >
+            <FormLabel>
+              {role === "teacher" ? "Teacher ID" : "Roll Number"}
+            </FormLabel>
+            <Input
+              placeholder={
+                role === "teacher"
+                  ? "Enter Your Teacher ID"
+                  : "Enter Your Roll Number"
+              }
+              value={rollNumber}
+              type="number"
+              _placeholder={{ opacity: 0.5, color: "black" }}
+              onChange={(e) => setRollNumber(e.target.value)}
+            ></Input>
+            <FormErrorMessage>{rollNumberError}</FormErrorMessage>
+          </FormControl>
+          <FormControl id="semester" isInvalid={!!semesterError} isRequired>
+            <FormLabel> Semester</FormLabel>
+            <Select
+              id="semester"
+              required
+              value={semester}
+              onChange={(e) => setSemester(e.target.value)}
+            >
+              <option value={1}>Semester 1</option>
+              <option value={2}>Semester 2</option>
+              <option value={3}>Semester 3</option>
+              <option value={4}>Semester 4</option>
+              <option value={5}>Semester 5</option>
+              <option value={6}>Semester 6</option>
+              <option value={7}>Semester 7</option>
+              <option value={8}>Semester 8</option>
+            </Select>
 
+            <FormErrorMessage>{semesterError}</FormErrorMessage>
+          </FormControl>
+        </>
+      )}
       <FormControl id="password" isInvalid={!!passwordError} isRequired>
         <FormLabel> Password</FormLabel>
         <InputGroup>
